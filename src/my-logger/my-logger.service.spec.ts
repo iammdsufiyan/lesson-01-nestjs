@@ -12,7 +12,7 @@ describe('MyLoggerService', () => {
     service = module.get<MyLoggerService>(MyLoggerService);
   });
 
-  // ('should be defined', () => {
-  //   expect(service).toBeDefined();
-  // });
+  it('should be defined', () => {
+    expect(service).toBeDefined();
+  });
 });

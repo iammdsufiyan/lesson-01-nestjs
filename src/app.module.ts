@@ -6,6 +6,7 @@ import { ThrottlerModule ,ThrottlerGuard } from '@nestjs/throttler';
 import { APP_GUARD } from '@nestjs/core';
 import{UsersModule } from './users/users.module'
 import { MyLoggerModule } from './my-logger/my-logger.module';
+import { MyLoggerService } from './my-logger/my-logger.service';
 @Module({
   imports:[
     TypeOrmModule.forRoot({
@@ -32,8 +33,10 @@ import { MyLoggerModule } from './my-logger/my-logger.module';
     UsersModule,
     MyLoggerModule,
   ],
+ 
+  exports: [MyLoggerService],   
   controllers: [AppController],
-  providers: [AppService , {
+  providers: [AppService ,MyLoggerService , {
     provide:APP_GUARD,
     useClass:ThrottlerGuard,
   }],

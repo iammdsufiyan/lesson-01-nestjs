@@ -24,7 +24,8 @@ export class UsersService {
         },
 
     ]
-    findAll(role?: 'INTERN' | 'ENGINEER' | 'ADMIN') {
+   // eslint-disable-next-line @typescript-eslint/require-await
+   async findAll(role?: 'INTERN' | 'ENGINEER' | 'ADMIN') {
         if (role) {
 
            const rolesArray = this.users.filter(user => user.role === role)
