@@ -23,7 +23,6 @@ export class UsersService {
             "role": "ADMIN"
         },
 
-
     ]
     findAll(role?: 'INTERN' | 'ENGINEER' | 'ADMIN') {
         if (role) {

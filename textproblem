@@ -1,0 +1,15 @@
+API ROUTES 
+http://localhost:3000/api/users/1 api in all case 
+Throttler module -  limit the api call .
+typeorm module - connect the db .
+DTO 
+VALIDATION
+PIPE 
+ParseIntPipe it is use for not to convert the id to +id for string to integer automaticaly happen.
+Query api 
+@SkipThrottle()
+
+
+🧠 ...createUserDto — Spread Operator
+This is using the spread syntax to unpack all the properties of createUserDto into a new object.
+
