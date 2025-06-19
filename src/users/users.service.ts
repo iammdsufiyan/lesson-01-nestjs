@@ -1,29 +1,40 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/create-users.dto';
+import { User } from './users.entity/users.entity';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import {user} from '../users/users.entity/users.entity'
 @Injectable()
 export class UsersService {
-    private users = [
-        {
-            "id": 1,
-            "name": "Leanne Graham",
-            "email": "scincere@april.biz",
-            "role": "INTERN",
-        },
-        {
-            "id": 2,
-            "name": "ervin howell",
-            "email": "shaab@email.tv",
-            "role": "ENGINEER",
-        },
-        {
-            "id": 3,
-            "name": "sufiyan",
-            "email": "sufiyan@123",
-            "role": "ADMIN"
-        },
+   constructor (
+    @InjectRepository(User)
+    private userRepository : Repository< User>
+   ){}
+    // private users = [
+    //     {
+    //         "id": 1,
+    //         "name": "Leanne Graham",
+    //         "email": "scincere@april.biz",
+    //         "role": "INTERN",
+    //         "password":"hellow"
+    //     },
+    //     {
+    //         "id": 2,
+    //         "name": "ervin howell",
+    //         "email": "shaab@email.tv",
+    //         "role": "ENGINEER",
+    //         "password":"hell123"
+    //     },
+    //     {
+    //         "id": 3,
+    //         "name": "sufiyan",
+    //         "email": "sufiyan@123",
+    //         "role": "ADMIN",
+    //         "password":"kikap"
+    //     },
 
-    ]
+    // ]
    // eslint-disable-next-line @typescript-eslint/require-await
    async findAll(role?: 'INTERN' | 'ENGINEER' | 'ADMIN') {
         if (role) {
@@ -42,8 +53,6 @@ export class UsersService {
         if (!user) throw new NotFoundException('user not found')
 
         return user
-
-
     };
     create(createUserDto: CreateUserDto) {
         const usersByHighestId

@@ -7,6 +7,7 @@ import { APP_GUARD } from '@nestjs/core';
 import{UsersModule } from './users/users.module'
 import { MyLoggerModule } from './my-logger/my-logger.module';
 import { MyLoggerService } from './my-logger/my-logger.service';
+import { User} from './users/users.entity/users.entity';
 @Module({
   imports:[
     TypeOrmModule.forRoot({
@@ -16,8 +17,9 @@ import { MyLoggerService } from './my-logger/my-logger.service';
       username: 'root',
       password: 'NewPassword123',
       database: 'lessondb',
-      entities: [],
+      entities: [User],
       synchronize: true,
+       autoLoadEntities: true,
     }),
     ThrottlerModule.forRoot([{
       name:'short',

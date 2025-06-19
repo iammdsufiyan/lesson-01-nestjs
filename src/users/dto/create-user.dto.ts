@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
-import { IsString, IsNotEmpty, IsEnum, IsEmail } from 'class-validator';
-
+import { IsString, IsNotEmpty, IsEnum, IsEmail  } from 'class-validator';
 export class CreateUserDto {
+
+  
   @IsString()
   @IsNotEmpty()
   name: string;
@@ -11,6 +12,14 @@ export class CreateUserDto {
 
   @IsEnum(['INTERN', 'ADMIN', 'ENGINEER'], {
     message: 'valid role required ',
+    
+    
+
   })
+
+  @IsNotEmpty()
+  @IsString() 
+  password:string;
+
   role: 'INTERN' | 'ENGINEER' | 'ADMIN';
 }

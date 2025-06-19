@@ -13,3 +13,5 @@ Query api
 🧠 ...createUserDto — Spread Operator
 This is using the spread syntax to unpack all the properties of createUserDto into a new object.
 
+doing thing to database 
+saving the user 
