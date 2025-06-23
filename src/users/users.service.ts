@@ -4,7 +4,6 @@ import { UpdateUserDto } from './dto/create-users.dto';
 import { User } from './users.entity/users.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import {user} from '../users/users.entity/users.entity'
 @Injectable()
 export class UsersService {
    constructor (
@@ -61,8 +60,7 @@ export class UsersService {
             id: usersByHighestId[0].id + 1,
             ...createUserDto
         }
-        this.users.push(newUser)
-        return newUser
+        this.userRepository.save(newUser)
     }
     update(id: number, updateUserDto: UpdateUserDto) {
         this.users = this.users.map(user => {

@@ -19,7 +19,7 @@ import { User} from './users/users.entity/users.entity';
       database: 'lessondb',
       entities: [User],
       synchronize: true,
-       autoLoadEntities: true,
+      autoLoadEntities: true,
     }),
     ThrottlerModule.forRoot([{
       name:'short',
