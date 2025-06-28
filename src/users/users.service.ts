@@ -63,9 +63,17 @@ export class UsersService {
         this.userRepository.save(newUser)
     }
     update(id: number, updateUserDto: UpdateUserDto) {
-        this.users = this.users.map(user => {
+        interface UpdatedUser {
+            id: number;
+            name: string;
+            email: string;
+            role: 'INTERN' | 'ENGINEER' | 'ADMIN';
+            password: string;
+        }
+
+        this.users = this.users.map((user: UpdatedUser): UpdatedUser => {
             if (user.id === id) {
-                return { ...user, ...updateUserDto }
+            return { ...user, ...updateUserDto }
             }
             return user
         })
